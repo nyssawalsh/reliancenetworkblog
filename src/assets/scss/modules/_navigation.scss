@@ -1,0 +1,200 @@
+// CUSTOM STYLING
+.site-header {
+  padding: 0 8px;
+}
+
+.top-bar {
+  background-color: $white;
+}
+
+.top-bar ul {
+  background: rgba($white, 0.7);
+}
+
+.top-bar .menu a:hover:not(.button) {
+  background-color: none;
+}
+
+.top-bar .menu > li:not(.menu-text) > a {
+  color: #666;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+  display: none;
+}
+
+.dropdown.menu > li.is-dropdown-submenu-parent > a {
+  padding-right: 1rem;
+}
+
+.is-dropdown-submenu {
+  border: none;
+  
+  right: auto !important;
+  
+  li {
+    
+    a {      
+      position: relative;
+      
+      &:after {
+        content: '';
+        width: 100%;
+        
+        position: absolute;
+        bottom: -0.25rem;
+        left: 0;
+        right: 0;
+        
+        transition: all 150ms ease-in-out;
+      }
+            
+    }
+    &:hover {
+      a {
+                
+        &:after {
+          border-bottom: 0.25rem solid #2b495c;
+          
+          transform: translateX(0);
+          
+        }
+      }
+    }
+  }
+}
+
+.top-bar-right {
+  align-items: center;
+  display: flex;
+  
+}
+
+.top-bar-contact {
+  color: #666666;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  
+  border: 1px solid #666666;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  transition-property: color;
+  transition-duration: 0.3s;
+  transform: perspective(1px) translateZ(0);
+  
+  &:after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    bottom: -0.25rem;
+    left: 0;
+    right: 0;
+    transition: 150ms ease-in-out all;
+    border: none;
+    top: -1px;
+    bottom: -1px;
+    z-index: -1;
+    -ms-transform: scaleY(0);
+        transform: scaleY(0);
+    -ms-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+    transition-property: transform;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out; 
+  }
+  
+  &:hover {
+    color: #ffffff;
+    border: 1px solid #2b495c; 
+    
+    &:after {
+      background: #2b495c;
+      border: 1px solid #2b495c;
+      border-radius: 2rem;
+      -ms-transform: scaleY(1);
+          transform: scaleY(1); 
+    }
+  }
+}
+
+
+
+
+// Navigation breakpoints
+.mobile-menu,
+.site-title-bar {
+  @include hide-for(medium);
+}
+
+.desktop-menu,
+.site-navigation .top-bar-left {
+  @include show-for(medium);
+}
+
+// Site title
+.site-desktop-title a {
+  font-weight: bold;
+}
+
+// Mobile menu
+.mobile-menu {
+  display: none; // prevents repaint caused by JS hiding menu onload
+}
+
+
+.mobile-menu,
+.mobile-off-canvas-menu {
+
+  // submenu arrow
+  .is-accordion-submenu-parent {
+    > a::after {
+      border-color: $accordionmenu-arrow-color transparent transparent;
+    }
+    &.active > a::after {
+      border-color: $menu-item-color-active transparent transparent;
+    }
+  }
+
+  // current page
+  .current_page_item > a {
+    font-weight: bold;
+  }
+}
+
+// Tablet and desktop menu
+.desktop-menu {
+
+  // submenu arrow
+  li.is-dropdown-submenu-parent {
+    > a::after {
+      border-color: $accordionmenu-arrow-color transparent transparent;
+    }
+    &.active > a::after {
+      border-color: $menu-item-color-active transparent transparent;
+    }
+  }
+}
+
+.site-navigation {
+  @include breakpoint(small only) {
+    padding: 0; // prevents container visibility on small screens
+  }
+}
+
+
+
+// WP post navigation
+.post-navigation {
+  @include clearfix;
+}
+
+.nav-previous {
+  float:left;
+}
+
+.nav-next {
+  float:right;
+}

@@ -1,0 +1,97 @@
+.main-wrap {
+  @include xy-grid-container;
+  @include xy-grid();
+  margin-top: 1rem;
+
+  @include breakpoint(medium) {
+    margin-top: 3rem;
+  }
+
+  &.sidebar-left {
+
+    // Place the sidebar below main content on small screens ...
+      @include breakpoint(small) {
+        .main-content { order: 1; }
+        .sidebar { order: 2; }
+      }
+
+    // ... and to the left on medium-up screens, when using the sidebar-left template
+      @include breakpoint(medium) {
+        .main-content { order: 2; }
+        .sidebar { order: 1; }
+      }
+  }
+
+  // Full width template
+  &.full-width {
+    .main-content {
+      @include xy-cell(12);
+    }
+  }
+
+  .main-content {
+
+    // Default template
+    @include breakpoint(small) {
+      @include xy-cell(12);
+    }
+
+    @include breakpoint(medium) {
+      @include xy-cell(8);
+    }
+
+  }
+
+  .sidebar {
+
+    @include breakpoint(small) {
+      @include xy-cell(12);
+    }
+
+    @include breakpoint(medium) {
+      @include xy-cell(4);
+      margin-top: 1rem;
+    }
+
+  }
+}
+
+
+//CUSTOM STYLING
+.rnetwork-blog-roll,
+.rnetwork-blog-post {
+  
+  
+  header {
+    h2 {
+      margin-bottom: 0;
+      a {
+        color: #666;
+        
+        &:hover {
+          color: #444;
+        }
+      }
+    }
+    
+    
+    time {
+      color: #f78d1d;
+      font-style: italic;
+      font-weight: bold;
+    }
+  }
+  
+  .blogpost-entry {
+    margin-bottom: 3rem;
+  }
+  
+  .entry-content {
+    color: #666;
+    font-weight: bold;
+    
+    border-left: 1px solid $black;
+    padding-left: 16px;
+    margin: 1rem 0;
+  }
+}
